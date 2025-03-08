@@ -1,0 +1,158 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* CSS */
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+
+.vp-code span {
+  color: var(--shiki-dark, inherit);
+}
+
+:root {
+  --c-brand: var(--color-sky-500);
+  --c-brand-light: var(--color-sky-400);
+  scrollbar-gutter: stable both-edges;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @apply bg-gray-950;
+  }
+  body {
+    @apply bg-gray-950;
+  }
+}
+
+nav img {
+  vertical-align: middle;
+}
+
+p img {
+  margin: 0px auto;
+}
+
+.prose hr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.link {
+  color: var(--c-brand);
+}
+
+.link:hover {
+  color: var(--c-brand-light);
+}
+
+.header-anchor {
+  display: none;
+}
+
+h3 .header-anchor {
+  display: inline-block;
+  position: absolute;
+  left: -1em;
+  text-decoration: none;
+  color: var(--c-brand);
+}
+
+h3 .header-anchor:before {
+  content: '#';
+}
+
+
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+button.copy {
+  display: none;
+}
+
+span.lang {
+  position: absolute;
+  right: 0.5em;
+  font-size: 0.75em;
+  color: #999;
+  font-family: var(--vp-font-family-base);
+}
+
+.custom-block {
+  margin: 28px 0;
+  padding: 0 24px 2px;
+  border-radius: 8px;
+  overflow-x: auto;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #444;
+  background-color: #f9f9f9;
+}
+.custom-block .custom-block-title {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.custom-block.tip {
+  border: 1px solid #42b883;
+}
+.custom-block.tip:before {
+  color: #42b883;
+}
+
+.prose
+  :where(:not(pre) > code):not(
+    :where([class~='not-prose'], [class~='not-prose'] *)
+  ) {
+  color: #0a3760;
+  padding: 0.25em 0.4em;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.prose
+  :where(code):not(
+    :where([class~='not-prose'], [class~='not-prose'] *)
+  )::before {
+  content: '' !important;
+}
+
+.prose
+  :where(code):not(
+    :where([class~='not-prose'], [class~='not-prose'] *)
+  )::after {
+  content: '' !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose
+    :where(:not(pre) > code):not(
+      :where([class~='not-prose'], [class~='not-prose'] *)
+    ) {
+    color: #d1e9ff;
+    background-color: #3c3a5b;
+  }
+}
+
+@media (max-width: 518px) {
+  .prose img {
+    max-width: 100% !important;
+  }
+}
